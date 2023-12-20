@@ -41,7 +41,7 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler(commands=['help'])
 async def send_welcome(message: types.Message):
-   await message.answer("/generate \n/guild \n/emoji")
+   await message.answer("Список команд\n\n/generate - Сгенерировать никнейи \n/guild - Сгенерировать название гильдии \n/emoji - Прислать случайный эмодзи")
 
 
 
