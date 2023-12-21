@@ -14,6 +14,9 @@ f = open("/home/alika/telegram_bot/guilds.txt", "r", encoding="UTF-8")
 guild = f.read().split('\n')
 f.close()
 
+f = open("/home/alika/telegram_bot/games2.txt", "r", encoding="UTF-8")
+game = f.read().split('\n\n')
+f.close()
 
 API_TOKEN = '6774319760:AAEPzFzMEmna65rTdl6EMNLF-O29KzAlxVw'
 
@@ -32,16 +35,19 @@ async def echo(message: types.Message):
 async def echo(message: types.Message):
         await message.answer(random.choice(guild))
 
+@dp.message_handler(commands=['game_recomend'])
+async def echo(message: types.Message):
+        await message.answer(random.choice(game))
 
 
 
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-   await message.answer("Привет!\nЯ помогу тебе с созданием идеального никнейма для видеоигр!\nЕсли тебе нужно сгенерировать никнейм напиши /generate.\nЕсли тебе нужна идея для названия гильдии напиши /guild.\nЕсли у тебя уже есть идея для никнейма или гильдии напиши её и я помогу её улучшить!\nДля просмотра всех команд напиши /help")
+   await message.answer("Привет!\nЯ помогу тебе с созданием идеального никнейма для видеоигр!\nЕсли тебе нужно сгенерировать никнейм напиши /generate.\nЕсли тебе нужна идея для названия гильдии напиши /guild.\nЕсли у тебя уже есть идея для никнейма или гильдии напиши её и я помогу сделать её лучше и оригинальнее!\nДля просмотра всех команд напиши /help")
 
 @dp.message_handler(commands=['help'])
 async def send_welcome(message: types.Message):
-   await message.answer("Список команд\n\n/generate - Сгенерировать никнейи \n/guild - Сгенерировать название гильдии \n/emoji - Прислать случайный эмодзи")
+   await message.answer("Список команд\n\n/generate - Сгенерировать никнейи \n/guild - Сгенерировать название гильдии \n/emoji - Прислать случайный эмодзи\n/game_recomend - Рекомендовать игру")
 
 
 
